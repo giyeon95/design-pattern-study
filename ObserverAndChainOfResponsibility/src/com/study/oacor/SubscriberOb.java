@@ -1,12 +1,29 @@
 package com.study.oacor;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class SubscriberOb implements MyObserver {
-    private ArrayList<Integer> arr;
+    private int myNum;
+    private List<Subscriber> subscribers;
 
     @Override
-    public void update(ArrayList<Integer> arr) {
-        this.arr = arr;
+    public void attach(Subscriber subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    @Override
+    public void update(int num) {
+        if(myNum != num) {
+            subscribers.forEach( observer -> {
+                observer.result();
+            });
+        }
+
+    }
+
+    public int getMyNum() {
+        return myNum;
     }
 }
