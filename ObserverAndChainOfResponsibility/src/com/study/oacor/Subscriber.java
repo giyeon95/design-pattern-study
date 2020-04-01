@@ -1,11 +1,9 @@
 package com.study.oacor;
 
 
-
 public abstract class Subscriber {
     public String name;
     private Subscriber next = null;
-    private int answerNumber;
 
 
     public Subscriber(String name) {
@@ -16,29 +14,16 @@ public abstract class Subscriber {
         this.next = next;
         return next;
     }
-//
-//    public final void support(int number) {
-//        if (resolve(number)) {
-//            answerNumber.add(number);
-//        }
-//        else if(next != null) {
-//            next.support(number);
-//        }
-//    }
-//
-//    public final void result() {
-//        String anw = name + " result : ";
-//        for (int i : answerNumber) {
-//            anw += i + ", ";
-//        }
-//        anw = anw.substring(0, anw.length() - 2);
-//        System.out.println(anw);
-//
-//        if(next != null) {
-//            next.result();
-//        }
-//    }
 
-    public abstract boolean resolve(int number);
+    public void support(int num) {
+        resolve(num);
+
+        if (next != null) {
+            next.support(num);
+        }
+    }
+
+
+    public abstract void resolve(int num);
 
 }

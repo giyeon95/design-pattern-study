@@ -8,14 +8,13 @@ public class Main {
 
         oddSubscriber.setNext(evenSubscriber);
 
-        SubscriberOb subscriberOb1 = new SubscriberOb();
-        SubscriberOb subscriberOb2 = new SubscriberOb();
+        MyObserver observer = new SubscriberOb();
+        observer.attach(oddSubscriber);
 
 
-
-        for (int i = 0 ; i< 20 ; i++) {
-            oddSubscriber.support(i);
+        for (int i = 0; i < 20; i++) {
+            observer.update(i);
         }
-        oddSubscriber.result();
+
     }
 }

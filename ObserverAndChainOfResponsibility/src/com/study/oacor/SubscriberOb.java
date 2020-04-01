@@ -5,8 +5,8 @@ import java.util.List;
 
 
 public class SubscriberOb implements MyObserver {
-    private int myNum;
-    private List<Subscriber> subscribers;
+    private List<Subscriber> subscribers = new ArrayList<>();
+
 
     @Override
     public void attach(Subscriber subscriber) {
@@ -15,15 +15,6 @@ public class SubscriberOb implements MyObserver {
 
     @Override
     public void update(int num) {
-        if(myNum != num) {
-            subscribers.forEach( observer -> {
-                observer.result();
-            });
-        }
-
-    }
-
-    public int getMyNum() {
-        return myNum;
+        subscribers.forEach(subscriber -> subscriber.support(num));
     }
 }

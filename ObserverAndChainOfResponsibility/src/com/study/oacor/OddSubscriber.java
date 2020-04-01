@@ -7,7 +7,9 @@ public class OddSubscriber extends Subscriber {
     }
 
     @Override
-    public boolean resolve(int number) {
-        return number % 2 != 0;
+    public void resolve(int num) {
+        if (num % 2 != 0) {
+            System.out.println(num + "은 홀수입니다.");
+        }
     }
 }
